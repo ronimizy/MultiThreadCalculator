@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultithreadCalculator.Core", "MultithreadCalculator.Core\MultithreadCalculator.Core.csproj", "{59BEBA1B-3F7E-43FD-A5F6-DD788848CF3F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiThreadCalculator.Tests", "MultiThreadCalculator.Tests\MultiThreadCalculator.Tests.csproj", "{983EB3F5-EE5D-42DF-942D-55AD940FB669}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiThreadCalculator.Application", "MultiThreadCalculator.Application\MultiThreadCalculator.Application.csproj", "{413139F7-893D-4175-9D2C-63ABAA42BE1A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiThreadCalculator.Presentation", "MultiThreadCalculator.Presentation\MultiThreadCalculator.Presentation.csproj", "{04E61859-6E6E-4675-A7BD-088A745374BE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{59BEBA1B-3F7E-43FD-A5F6-DD788848CF3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59BEBA1B-3F7E-43FD-A5F6-DD788848CF3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59BEBA1B-3F7E-43FD-A5F6-DD788848CF3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59BEBA1B-3F7E-43FD-A5F6-DD788848CF3F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{983EB3F5-EE5D-42DF-942D-55AD940FB669}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{983EB3F5-EE5D-42DF-942D-55AD940FB669}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{983EB3F5-EE5D-42DF-942D-55AD940FB669}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{983EB3F5-EE5D-42DF-942D-55AD940FB669}.Release|Any CPU.Build.0 = Release|Any CPU
+		{413139F7-893D-4175-9D2C-63ABAA42BE1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{413139F7-893D-4175-9D2C-63ABAA42BE1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{413139F7-893D-4175-9D2C-63ABAA42BE1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{413139F7-893D-4175-9D2C-63ABAA42BE1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04E61859-6E6E-4675-A7BD-088A745374BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04E61859-6E6E-4675-A7BD-088A745374BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04E61859-6E6E-4675-A7BD-088A745374BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04E61859-6E6E-4675-A7BD-088A745374BE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
