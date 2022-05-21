@@ -46,6 +46,16 @@
                 <TextBlock Grid.Row="5" Grid.Column="0" Text="Division" />
                 <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding Division}" />
             </Grid>
+
+            <TextBlock Text="Request queue (milliseconds)" 
+                       FontSize="14" 
+                       FontWeight="Bold"
+                       Margin="10,0,0,0" />
+            
+            <Grid ColumnDefinitions="*,*" RowDefinitions="*" Margin="10">
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="Polling delay" />
+                <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding RequestQueuePollingDelay}" />
+            </Grid>
         </StackPanel>
     </Panel>
 </UserControl>

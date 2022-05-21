@@ -53,6 +53,7 @@ namespace MultiThreadCalculator.Presentation
 
             var configuration = new RequestQueueConfiguration(TimeSpan.FromMilliseconds(500));
             var requestQueue = new RequestQueue(configuration);
+            collection.AddSingleton(configuration);
             collection.AddSingleton<IRequestQueueConsumer>(requestQueue);
             collection.AddSingleton<IRequestQueuePublisher>(requestQueue);
 

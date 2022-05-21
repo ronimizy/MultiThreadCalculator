@@ -9,11 +9,16 @@ namespace MultiThreadCalculator.Presentation.ViewModels;
 public class SettingsViewModel : ViewModelBase, IRoutableViewModel
 {
     private readonly ExpressionOperationExecutionDuration _duration;
+    private readonly RequestQueueConfiguration _requestQueueConfiguration;
 
-    public SettingsViewModel(ExpressionOperationExecutionDuration duration, IScreen hostScreen)
+    public SettingsViewModel(
+        IScreen hostScreen,
+        ExpressionOperationExecutionDuration duration,
+        RequestQueueConfiguration requestQueueConfiguration)
     {
         _duration = duration;
         HostScreen = hostScreen;
+        _requestQueueConfiguration = requestQueueConfiguration;
     }
 
     public IScreen HostScreen { get; }
@@ -56,5 +61,11 @@ public class SettingsViewModel : ViewModelBase, IRoutableViewModel
     {
         get => _duration.Division;
         set => _duration.Division = value;
+    }
+
+    public double RequestQueuePollingDelay
+    {
+        get => _requestQueueConfiguration.QueuePollingDelay.TotalMilliseconds;
+        set => _requestQueueConfiguration.QueuePollingDelay = TimeSpan.FromMilliseconds(value);
     }
 }
