@@ -1,5 +1,6 @@
 using System;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using System.Reactive;
 using Avalonia.Threading;
@@ -156,6 +157,6 @@ public class CalculatorViewModel : ViewModelBase, IRoutableViewModel
         var expressionString = response.Expression.Accept(_expressionFormatter).ToString();
         var durationString = response.ExecutionDuration.ToString("c");
         
-        return new CalculationResponseModel(response.Result.ToString("N"), expressionString, durationString);
+        return new CalculationResponseModel(response.Result.ToString(CultureInfo.InvariantCulture), expressionString, durationString);
     }
 }

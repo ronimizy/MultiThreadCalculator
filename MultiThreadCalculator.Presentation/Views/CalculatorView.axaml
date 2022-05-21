@@ -141,7 +141,7 @@
                            VerticalAlignment="Top"
                            HorizontalAlignment="Right"
                            Margin="5" />
-                
+
                 <DataGrid Name="Responses"
                           Items="{Binding Responses}"
                           AutoGenerateColumns="False"
@@ -153,6 +153,7 @@
                                 <DataTemplate DataType="presentationModels:CalculationResponseModel">
                                     <StackPanel Orientation="Vertical">
                                         <TextBlock Text="{Binding Result}"
+                                                   TextWrapping="Wrap"
                                                    Classes="Buffer"
                                                    HorizontalAlignment="Left" />
                                         <TextBlock Text="{Binding Duration}" />
