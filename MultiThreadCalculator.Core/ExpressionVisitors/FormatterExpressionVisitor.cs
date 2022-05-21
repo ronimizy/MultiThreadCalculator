@@ -26,7 +26,7 @@ public class FormatterExpressionVisitor : IFormatterExpressionVisitor
     public StringBuilder Visit(SummationExpression expression)
     {
         expression.Left.Accept(this);
-        _stringBuilder.Append('+');
+        _stringBuilder.Append(" + ");
         expression.Right.Accept(this);
         
         return _stringBuilder;
@@ -35,7 +35,7 @@ public class FormatterExpressionVisitor : IFormatterExpressionVisitor
     public StringBuilder Visit(SubtractionExpression expression)
     {
         expression.Left.Accept(this);
-        _stringBuilder.Append('-');
+        _stringBuilder.Append(" - ");
         expression.Right.Accept(this);
         
         return _stringBuilder;
@@ -44,7 +44,7 @@ public class FormatterExpressionVisitor : IFormatterExpressionVisitor
     public StringBuilder Visit(MultiplicationExpression expression)
     {
         expression.Left.Accept(this);
-        _stringBuilder.Append('*');
+        _stringBuilder.Append(" * ");
         expression.Right.Accept(this);
         
         return _stringBuilder;
@@ -53,7 +53,7 @@ public class FormatterExpressionVisitor : IFormatterExpressionVisitor
     public StringBuilder Visit(DivisionExpression expression)
     {
         expression.Divisible.Accept(this);
-        _stringBuilder.Append('/');
+        _stringBuilder.Append(" / ");
         expression.Divisor.Accept(this);
         
         return _stringBuilder;

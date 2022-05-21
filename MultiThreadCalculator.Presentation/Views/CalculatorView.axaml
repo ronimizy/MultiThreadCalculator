@@ -1,0 +1,158 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:presentationModels="using:MultiThreadCalculator.Presentation.Models"
+             xmlns:progRing="clr-namespace:AvaloniaProgressRing;assembly=AvaloniaProgressRing"
+             xmlns:viewModels="clr-namespace:MultiThreadCalculator.Presentation.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="605" d:DesignHeight="300"
+             x:Class="MultiThreadCalculator.Presentation.Views.CalculatorView"
+             MinHeight="300"
+             MaxHeight="300"
+             Width="605">
+
+    <Design.DataContext>
+        <viewModels:CalculatorViewModel />
+    </Design.DataContext>
+
+    <UserControl.Styles>
+        <Style Selector="Button.Calculator">
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+            <Setter Property="VerticalAlignment" Value="Stretch" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="CornerRadius" Value="0" />
+            <Setter Property="FontSize" Value="25" />
+            <Setter Property="BorderBrush" Value="White" />
+            <Setter Property="BorderThickness" Value="0.5" />
+        </Style>
+
+        <Style Selector="TextBlock.Buffer">
+            <Setter Property="TextAlignment" Value="Right" />
+            <Setter Property="VerticalAlignment" Value="Bottom" />
+            <Setter Property="FontSize" Value="20" />
+        </Style>
+    </UserControl.Styles>
+
+    <Panel>
+        <Button ZIndex="1"
+                Content="Settings"
+                VerticalAlignment="Top"
+                BorderThickness="0"
+                CornerRadius="0"
+                Background="#646666"
+                Width="200"
+                Height="24"
+                Command="{Binding OpenSettings}" />
+
+        <StackPanel Orientation="Horizontal" ZIndex="0">
+            <StackPanel Orientation="Vertical" VerticalAlignment="Bottom" Width="200">
+
+                <ScrollViewer Height="80" HorizontalScrollBarVisibility="Visible">
+                    <TextBlock Classes="Buffer" Text="{Binding ExpressionString }" />
+                </ScrollViewer>
+
+                <Grid Name="Buttons" RowDefinitions="*,*,*,*,*" ColumnDefinitions="*,*,*,*">
+                    <Button Content="clear" Classes="Calculator" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                            Click="Clear_OnClick" />
+                    <Button Content="←" Classes="Calculator" Grid.Row="0" Grid.Column="2" Click="Pop_OnClick" />
+                    <Button Content="=" Classes="Calculator" Grid.Row="4" Grid.Column="3" Click="Evaluate_OnClick"
+                            Background="Orange" />
+
+                    <Button Tag="1" Content="1" Classes="Calculator" Grid.Row="1" Grid.Column="0"
+                            Click="Character_OnClick" />
+                    <Button Tag="2" Content="2" Classes="Calculator" Grid.Row="1" Grid.Column="1"
+                            Click="Character_OnClick" />
+                    <Button Tag="3" Content="3" Classes="Calculator" Grid.Row="1" Grid.Column="2"
+                            Click="Character_OnClick" />
+
+                    <Button Tag="4" Content="4" Classes="Calculator" Grid.Row="2" Grid.Column="0"
+                            Click="Character_OnClick" />
+                    <Button Tag="5" Content="5" Classes="Calculator" Grid.Row="2" Grid.Column="1"
+                            Click="Character_OnClick" />
+                    <Button Tag="6" Content="6" Classes="Calculator" Grid.Row="2" Grid.Column="2"
+                            Click="Character_OnClick" />
+
+                    <Button Tag="7" Content="7" Classes="Calculator" Grid.Row="3" Grid.Column="0"
+                            Click="Character_OnClick" />
+                    <Button Tag="8" Content="8" Classes="Calculator" Grid.Row="3" Grid.Column="1"
+                            Click="Character_OnClick" />
+                    <Button Tag="9" Content="9" Classes="Calculator" Grid.Row="3" Grid.Column="2"
+                            Click="Character_OnClick" />
+
+                    <Button Tag="0" Content="0" Classes="Calculator" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"
+                            Click="Character_OnClick" />
+                    <Button Tag="." Content="." Classes="Calculator" Grid.Row="4" Grid.Column="2"
+                            Click="Character_OnClick" />
+
+                    <Button Tag="/" Content="÷" Classes="Calculator" Grid.Row="0" Grid.Column="3"
+                            Click="Character_OnClick"
+                            Background="Orange" />
+                    <Button Tag="*" Content="×" Classes="Calculator" Grid.Row="1" Grid.Column="3"
+                            Click="Character_OnClick"
+                            Background="Orange" />
+                    <Button Tag="-" Content="−" Classes="Calculator" Grid.Row="2" Grid.Column="3"
+                            Click="Character_OnClick"
+                            Background="Orange" />
+                    <Button Tag="+" Content="+" Classes="Calculator" Grid.Row="3" Grid.Column="3"
+                            Click="Character_OnClick"
+                            Background="Orange" />
+                </Grid>
+            </StackPanel>
+
+            <DataGrid Name="Requests"
+                      Items="{Binding Requests}"
+                      AutoGenerateColumns="False"
+                      VerticalScrollBarVisibility="Hidden"
+                      Height="300">
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn Header="Requests" Width="200">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate DataType="presentationModels:CalculationRequestModel">
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Text="{Binding Expression}"
+                                               TextWrapping="Wrap"
+                                               HorizontalAlignment="Left"
+                                               VerticalAlignment="Top" />
+
+                                    <progRing:ProgressRing Width="20"
+                                                           Height="20"
+                                                           HorizontalAlignment="Right"
+                                                           Margin="5,5,5,5"
+                                                           IsActive="{Binding IsExecuting}"
+                                                           Foreground="White" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <DataGrid Name="Responses"
+                      Items="{Binding Responses}"
+                      AutoGenerateColumns="False"
+                      VerticalScrollBarVisibility="Hidden"
+                      Height="300">
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn Header="Responses" Width="200">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate DataType="presentationModels:CalculationResponseModel">
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Text="{Binding Result}"
+                                               Classes="Buffer"
+                                               HorizontalAlignment="Left" />
+                                    <TextBlock Text="{Binding Duration}" />
+                                    <TextBlock Text="{Binding Expression}"
+                                               TextWrapping="Wrap"
+                                               HorizontalAlignment="Left"
+                                               VerticalAlignment="Bottom" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+    </Panel>
+
+
+</UserControl>

@@ -1,0 +1,51 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:MultiThreadCalculator.Presentation.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="200" d:DesignHeight="250"
+             x:Class="MultiThreadCalculator.Presentation.Views.SettingsView"
+             Width="300">
+
+
+    <Design.DataContext>
+        <viewModels:SettingsViewModel />
+    </Design.DataContext>
+
+    <Panel>
+        <Button ZIndex="1"
+                Content="Back"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Stretch"
+                BorderThickness="0"
+                Background="#646666"
+                CornerRadius="0"
+                Command="{Binding  CloseSettings}" />
+
+        <StackPanel Orientation="Vertical" Spacing="10" VerticalAlignment="Bottom" ZIndex="0">
+            <Separator Height="30" />
+
+            <TextBlock Text="Operation execution time (seconds)" FontSize="14" FontWeight="Bold" Margin="10,0,0,0" />
+
+            <Grid ColumnDefinitions="*,*" RowDefinitions="*,*,*,*,*,*" Margin="10">
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="Literal" />
+                <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Literal}" />
+
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="Unary Minus" />
+                <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding UnaryMinus}" />
+
+                <TextBlock Grid.Row="2" Grid.Column="0" Text="Summation" />
+                <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Summation}" />
+
+                <TextBlock Grid.Row="3" Grid.Column="0" Text="Subtraction" />
+                <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Subtraction}" />
+
+                <TextBlock Grid.Row="4" Grid.Column="0" Text="Multiplication" />
+                <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding Multiplication}" />
+
+                <TextBlock Grid.Row="5" Grid.Column="0" Text="Division" />
+                <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding Division}" />
+            </Grid>
+        </StackPanel>
+    </Panel>
+</UserControl>
