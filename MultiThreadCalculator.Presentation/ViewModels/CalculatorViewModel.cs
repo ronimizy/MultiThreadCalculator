@@ -45,7 +45,8 @@ public class CalculatorViewModel : ViewModelBase, IRoutableViewModel
         OpenSettings = ReactiveCommand.CreateFromObservable(() =>
         {
             var settings = provider.GetRequiredService<ExpressionOperationExecutionDuration>();
-            return HostScreen.Router.Navigate.Execute(new SettingsViewModel(settings, HostScreen));
+            var configuration = provider.GetRequiredService<RequestQueueConfiguration>();
+            return HostScreen.Router.Navigate.Execute(new SettingsViewModel(HostScreen, settings, configuration));
         });
     }
 

@@ -99,58 +99,74 @@
                 </Grid>
             </StackPanel>
 
-            <DataGrid Name="Requests"
-                      Items="{Binding Requests}"
-                      AutoGenerateColumns="False"
-                      VerticalScrollBarVisibility="Hidden"
-                      Height="300">
-                <DataGrid.Columns>
-                    <DataGridTemplateColumn Header="Requests" Width="200">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate DataType="presentationModels:CalculationRequestModel">
-                                <StackPanel Orientation="Vertical">
-                                    <TextBlock Text="{Binding Expression}"
-                                               TextWrapping="Wrap"
-                                               HorizontalAlignment="Left"
-                                               VerticalAlignment="Top" />
+            <Panel>
+                <TextBlock ZIndex="1"
+                           Text="{Binding Requests.Count}"
+                           VerticalAlignment="Top"
+                           HorizontalAlignment="Right"
+                           Margin="5" />
 
-                                    <progRing:ProgressRing Width="20"
-                                                           Height="20"
-                                                           HorizontalAlignment="Right"
-                                                           Margin="5,5,5,5"
-                                                           IsActive="{Binding IsExecuting}"
-                                                           Foreground="White" />
-                                </StackPanel>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                </DataGrid.Columns>
-            </DataGrid>
+                <DataGrid Name="Requests"
+                          Items="{Binding Requests}"
+                          AutoGenerateColumns="False"
+                          VerticalScrollBarVisibility="Hidden"
+                          Height="300">
+                    <DataGrid.Columns>
+                        <DataGridTemplateColumn Header="Requests" Width="200">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate DataType="presentationModels:CalculationRequestModel">
+                                    <StackPanel Orientation="Vertical">
+                                        <TextBlock Text="{Binding Expression}"
+                                                   TextWrapping="Wrap"
+                                                   HorizontalAlignment="Left"
+                                                   VerticalAlignment="Top" />
 
-            <DataGrid Name="Responses"
-                      Items="{Binding Responses}"
-                      AutoGenerateColumns="False"
-                      VerticalScrollBarVisibility="Hidden"
-                      Height="300">
-                <DataGrid.Columns>
-                    <DataGridTemplateColumn Header="Responses" Width="200">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate DataType="presentationModels:CalculationResponseModel">
-                                <StackPanel Orientation="Vertical">
-                                    <TextBlock Text="{Binding Result}"
-                                               Classes="Buffer"
-                                               HorizontalAlignment="Left" />
-                                    <TextBlock Text="{Binding Duration}" />
-                                    <TextBlock Text="{Binding Expression}"
-                                               TextWrapping="Wrap"
-                                               HorizontalAlignment="Left"
-                                               VerticalAlignment="Bottom" />
-                                </StackPanel>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                </DataGrid.Columns>
-            </DataGrid>
+                                        <progRing:ProgressRing Width="20"
+                                                               Height="20"
+                                                               HorizontalAlignment="Right"
+                                                               Margin="5,5,5,5"
+                                                               IsActive="{Binding IsExecuting}"
+                                                               Foreground="White" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Panel>
+
+            <Panel>
+                <TextBlock ZIndex="1"
+                           Text="{Binding Responses.Count}"
+                           VerticalAlignment="Top"
+                           HorizontalAlignment="Right"
+                           Margin="5" />
+                
+                <DataGrid Name="Responses"
+                          Items="{Binding Responses}"
+                          AutoGenerateColumns="False"
+                          VerticalScrollBarVisibility="Hidden"
+                          Height="300">
+                    <DataGrid.Columns>
+                        <DataGridTemplateColumn Header="Responses" Width="200">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate DataType="presentationModels:CalculationResponseModel">
+                                    <StackPanel Orientation="Vertical">
+                                        <TextBlock Text="{Binding Result}"
+                                                   Classes="Buffer"
+                                                   HorizontalAlignment="Left" />
+                                        <TextBlock Text="{Binding Duration}" />
+                                        <TextBlock Text="{Binding Expression}"
+                                                   TextWrapping="Wrap"
+                                                   HorizontalAlignment="Left"
+                                                   VerticalAlignment="Bottom" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Panel>
         </StackPanel>
     </Panel>
 

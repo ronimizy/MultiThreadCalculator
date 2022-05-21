@@ -29,6 +29,7 @@ public partial class CalculatorView : ReactiveUserControl<CalculatorViewModel>
             return;
 
         ViewModel?.EnterCharacter(tag.Single());
+        Focus();
     }
 
     protected override void OnInitialized()
@@ -46,6 +47,9 @@ public partial class CalculatorView : ReactiveUserControl<CalculatorViewModel>
 
         if (c is '.' or '+' or '-' or '*' or '/')
             ViewModel?.EnterCharacter(c);
+        
+        if (c is '=')
+            ViewModel?.Evaluate();
     }
 
     protected override void OnKeyDown(KeyEventArgs e)
