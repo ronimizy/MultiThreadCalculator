@@ -1,4 +1,5 @@
 using MultiThreadCalculator.Core.ExpressionBuilderVisitors;
+using MultiThreadCalculator.Core.Tools;
 
 namespace MultiThreadCalculator.Core.Builders.Operator;
 
@@ -12,9 +13,12 @@ public class UnaryMinusBuilder : IExpressionBuilder
     {
         if (builder is IOperatorBuilder)
         {
+            if (!IsCompleted)
+                ExpressionBuilderExceptionFactory.IncompleteBuilder(this);
+
             return builder.Consume(this);
         }
-        
+
         Wrapped = Wrapped is null ? builder : Wrapped.Consume(builder);
         return this;
     }
